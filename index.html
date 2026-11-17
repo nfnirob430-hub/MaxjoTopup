@@ -1,0 +1,353 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAXJO TOPUP</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#10101c;
+ color:white;
+}
+
+.hidden{display:none!important}
+
+/* GAMING INTRO */
+#intro{
+ position:fixed;
+ inset:0;
+ z-index:9999;
+ background:radial-gradient(circle,#321018,#080810 70%);
+ display:flex;
+ flex-direction:column;
+ justify-content:center;
+ align-items:center;
+ text-align:center;
+ animation:introFade 3s forwards;
+}
+
+.diamond{
+ font-size:75px;
+ animation:diamondGlow 1s infinite alternate;
+}
+
+.intro-title{
+ color:#ff3030;
+ font-size:32px;
+ font-weight:bold;
+ text-shadow:0 0 15px red,0 0 30px red;
+ animation:titleZoom 1s ease-in-out;
+}
+
+.intro-sub{
+ color:#ddd;
+ letter-spacing:3px;
+ margin-top:12px;
+}
+
+@keyframes diamondGlow{
+ from{transform:scale(.85);filter:drop-shadow(0 0 5px red)}
+ to{transform:scale(1.15);filter:drop-shadow(0 0 25px red)}
+}
+
+@keyframes titleZoom{
+ from{opacity:0;transform:scale(.5)}
+ to{opacity:1;transform:scale(1)}
+}
+
+@keyframes introFade{
+ 0%,80%{opacity:1}
+ 100%{opacity:0;visibility:hidden}
+}
+
+/* WEBSITE */
+header{
+ background:#1b1b2d;
+ padding:22px;
+ text-align:center;
+ border-bottom:2px solid #ff3030;
+}
+
+header h1{color:#ff3030;margin:0}
+header p{color:#aaa}
+
+.container{
+ max-width:480px;
+ margin:20px auto;
+ padding:15px;
+}
+
+.box{
+ background:#1d1d30;
+ padding:18px;
+ border-radius:13px;
+ margin-bottom:15px;
+}
+
+h3{color:#ff4545;margin-top:0}
+
+label{
+ display:block;
+ margin:12px 0 7px;
+}
+
+input,select{
+ width:100%;
+ padding:13px;
+ border:1px solid #444;
+ border-radius:8px;
+ background:#10101c;
+ color:white;
+ font-size:15px;
+}
+
+button{
+ width:100%;
+ padding:14px;
+ border:0;
+ border-radius:8px;
+ background:#ed3030;
+ color:white;
+ font-weight:bold;
+ font-size:16px;
+ margin-top:14px;
+ cursor:pointer;
+}
+
+.payment{
+ display:flex;
+ gap:10px;
+}
+
+.payment button{flex:1}
+.bk{background:#e2136e}
+.ng{background:#e67e22}
+
+.number{
+ background:#111;
+ padding:15px;
+ border-radius:8px;
+ margin-top:12px;
+ font-size:19px;
+ text-align:center;
+}
+
+.note{
+ color:#aaa;
+ font-size:12px;
+ text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+ <div class="diamond">💎</div>
+ <div class="intro-title">MAXJO TOPUP</div>
+ <div class="intro-sub">WELCOME GAMER</div>
+</div>
+
+<header>
+ <h1>MAXJO TOPUP</h1>
+ <p>FAST & EASY DIAMOND TOPUP</p>
+</header>
+
+<div class="container">
+
+<div class="box">
+ <h3>PLAYER INFORMATION</h3>
+
+ <label>Player UID</label>
+ <input id="uid" placeholder="Enter Player UID">
+
+ <button onclick="checkUID()">CHECK UID</button>
+ <p id="uidStatus" class="note"></p>
+</div>
+
+<div class="box hidden" id="orderBox">
+ <h3>SELECT PACKAGE</h3>
+
+ <label>Diamond Package</label>
+ <select id="pack">
+  <option value="">Select Package</option>
+  <option value="115 Diamond|90">115 Diamond - 90৳</option>
+  <option value="240 Diamond|170">240 Diamond - 170৳</option>
+  <option value="Weekly Lite|35">Weekly Lite - 35৳</option>
+  <option value="2X Weekly Lite|70">2X Weekly Lite - 70৳</option>
+  <option value="Weekly|155">Weekly - 155৳</option>
+  <option value="Monthly|770">Monthly - 770৳</option>
+ </select>
+
+ <button onclick="submitOrder()">SUBMIT ORDER</button>
+</div>
+
+<div class="box hidden" id="paymentBox">
+ <h3>SELECT PAYMENT METHOD</h3>
+
+ <div class="payment">
+  <button class="bk" onclick="payment('bKash')">bKash</button>
+  <button class="ng" onclick="payment('Nagad')">Nagad</button>
+ </div>
+
+ <div id="payDetails" class="hidden">
+  <div class="number">
+   <p id="payName"></p>
+   <strong id="payNumber"></strong>
+   <button onclick="copyNumber()">COPY NUMBER</button>
+  </div>
+
+  <p class="note">Send Money করার পর Transaction ID বসাও।</p>
+
+  <label>Transaction ID</label>
+  <input id="trx" placeholder="Enter Transaction ID">
+
+  <button onclick="verifyOrder()">VERIFY ORDER</button>
+ </div>
+</div>
+
+<div class="box hidden" id="result">
+ <h3>ORDER SUBMITTED</h3>
+ <p>অর্ডারের তথ্য WhatsApp-এ পাঠাও।</p>
+ <p class="note">পেমেন্ট যাচাই না হওয়া পর্যন্ত অর্ডার Pending থাকবে।</p>
+
+ <button style="background:#168b48" onclick="sendWhatsApp()">
+ SEND ORDER TO WHATSAPP
+ </button>
+</div>
+
+<p class="note">MAXJO TOPUP © 2026</p>
+
+</div>
+
+<script>
+let selectedPayment = "";
+let orderData = {};
+
+function checkUID(){
+ const uid=document.getElementById("uid").value.trim();
+
+ if(!uid){
+  alert("Enter Player UID");
+  return;
+ }
+
+ document.getElementById("uidStatus").innerText=
+ "UID entered. Please continue.";
+
+ document.getElementById("orderBox").classList.remove("hidden");
+}
+
+function submitOrder(){
+ const pack=document.getElementById("pack").value;
+
+ if(!pack){
+  alert("Select a Diamond Package");
+  return;
+ }
+
+ const uid=document.getElementById("uid").value.trim();
+
+ orderData.uid=uid;
+ orderData.package=pack.split("|")[0];
+ orderData.price=pack.split("|")[1];
+
+ selectedPayment="";
+ document.getElementById("trx").value="";
+ document.getElementById("paymentBox").classList.remove("hidden");
+ document.getElementById("payDetails").classList.add("hidden");
+ document.getElementById("result").classList.add("hidden");
+}
+
+function payment(method){
+ selectedPayment=method;
+
+ let number=method==="bKash"
+ ? "+8801865908732"
+ : "+8801627220616";
+
+ document.getElementById("payName").innerText=method;
+ document.getElementById("payNumber").innerText=number;
+
+ orderData.method=method;
+ orderData.number=number;
+
+ document.getElementById("payDetails").classList.remove("hidden");
+ document.getElementById("result").classList.add("hidden");
+}
+
+function copyNumber(){
+ const number=document.getElementById("payNumber").innerText;
+
+ if(navigator.clipboard && navigator.clipboard.writeText){
+  navigator.clipboard.writeText(number)
+  .then(()=>alert("Number copied!"))
+  .catch(()=>alert("Copy this number: "+number));
+ }else{
+  alert("Copy this number: "+number);
+ }
+}
+
+function verifyOrder(){
+ const trx=document.getElementById("trx").value.trim();
+
+ if(!selectedPayment){
+  alert("Select Payment Method");
+  return;
+ }
+
+ if(!trx){
+  alert("Enter Transaction ID");
+  return;
+ }
+
+ orderData.trx=trx;
+ orderData.status="Pending Verification";
+
+ document.getElementById("result").classList.remove("hidden");
+}
+
+function sendWhatsApp(){
+ if(!orderData.trx){
+  alert("Please enter Transaction ID");
+  return;
+ }
+
+ const message=
+`MAXJO TOPUP - NEW ORDER
+
+Player UID: ${orderData.uid}
+Package: ${orderData.package}
+Price: ${orderData.price} BDT
+Payment: ${orderData.method}
+Payment Number: ${orderData.number}
+Transaction ID: ${orderData.trx}
+
+Status: Pending Verification`;
+
+ const whatsapp="8801610570290";
+
+ const url="https://wa.me/"+whatsapp+
+ "?text="+encodeURIComponent(message);
+
+ window.open(url,"_blank");
+}
+
+/* INTRO 3 SECONDS */
+window.addEventListener("load",function(){
+ setTimeout(function(){
+  document.getElementById("intro").remove();
+ },3000);
+});
+</script>
+
+</body>
+</html>
