@@ -3,94 +3,164 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAXJO TOPUP</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#10131c;color:white;font-family:Arial}
-header{text-align:center;background:#1c2230;padding:22px}
-header h1{color:#ff4242;margin:0}
-.notice,.payment,.order{background:#202838;margin:12px;padding:15px;border-radius:12px}
-.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:12px}
-.tabs button{padding:13px 4px;background:#292f40;color:white;border:0;border-radius:8px;font-weight:bold}
-.tabs button.active{background:#f04444}
-.section{display:none;padding:12px}
-.section.show{display:block}
-.package{display:flex;justify-content:space-between;align-items:center;background:#202838;margin:9px 0;padding:13px;border-radius:9px}
-.package button,.copy{background:#f04444;color:white;border:0;padding:9px 12px;border-radius:7px}
-input,select{width:100%;padding:13px;margin:7px 0;background:#171d29;color:white;border:1px solid #444;border-radius:8px}
-.submit{width:100%;padding:14px;background:#f04444;color:white;border:0;border-radius:8px;font-weight:bold}
-.copy{margin-left:8px}
-.payment p{display:flex;align-items:center;justify-content:space-between;gap:5px}
-.small{color:#aaa;font-size:13px}
+body{margin:0;background:#f3f5f9;color:#202535;font-family:Arial,sans-serif}
+header{background:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px #0001}
+.logo{font-size:21px;font-weight:900;color:#ed344b}
+.logo span{color:#202535}
+.header-btn{background:#ed344b;color:white;border:0;padding:10px 14px;border-radius:8px}
+nav{display:flex;gap:9px;overflow-x:auto;background:white;padding:12px}
+nav a{white-space:nowrap;text-decoration:none;color:#333;font-size:13px;font-weight:bold}
+.notice{background:#fff3d9;color:#765000;padding:13px;margin:12px;border-radius:9px;font-size:13px}
+.container{padding:12px;max-width:850px;margin:auto}
+.heading{font-size:18px;font-weight:800;margin:20px 0 12px}
+.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.offer{background:linear-gradient(130deg,#ed344b,#a91c42);color:white;border-radius:12px;padding:17px;min-height:112px}
+.offer:nth-child(2){background:linear-gradient(130deg,#5736b8,#29236e)}
+.offer b{font-size:17px}
+.offer p{font-size:12px;margin-bottom:0}
+.categories{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.category{background:white;border-radius:11px;padding:16px 10px;text-align:center;box-shadow:0 2px 9px #0001;border:1px solid #eee}
+.category .emoji{font-size:28px}
+.category b{display:block;margin-top:8px;font-size:13px}
+.category button{background:#ed344b;color:white;border:0;border-radius:6px;padding:8px 14px;margin-top:10px}
+.service{background:white;border-radius:11px;padding:14px;margin:12px 0;box-shadow:0 2px 8px #0001}
+.service h3{margin:0 0 12px;font-size:16px}
+.packages{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.package{border:1px solid #e5e7eb;border-radius:9px;padding:12px;text-align:center}
+.package b{display:block;font-size:14px}
+.price{color:#ed344b;font-weight:800;margin:8px}
+.buy{background:#ed344b;color:white;border:0;border-radius:7px;padding:9px 18px;width:100%}
+.payment{background:white;border-radius:11px;padding:15px;margin:12px 0}
+.payrow{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;padding:11px 0;font-size:14px}
+.copy{border:0;background:#202535;color:white;padding:7px 12px;border-radius:6px}
+input,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;margin:7px 0}
+#order{display:none}
+.submit{background:#ed344b;color:white;border:0;padding:13px;width:100%;border-radius:8px;font-weight:bold}
+.recent{background:white;border-radius:10px;padding:14px;margin:10px 0}
+footer{background:#202535;color:white;text-align:center;padding:25px;margin-top:25px;font-size:13px}
 </style>
 </head>
 <body>
 
 <header>
-<h1>MAXJO TOPUP</h1>
-<p>Fast & Trusted Top Up Service</p>
+  <div class="logo">MAXJO <span>TOPUP</span></div>
+  <button class="header-btn" onclick="document.getElementById('order').scrollIntoView()">Login / Order</button>
 </header>
 
+<nav>
+  <a href="#home">HOME</a>
+  <a href="#offers">SPECIAL OFFER</a>
+  <a href="#categories">CATEGORIES</a>
+  <a href="#recent">RECENT ORDERS</a>
+  <a href="#payment">PAYMENT</a>
+</nav>
+
 <div class="notice">
-<b>📢 NOTICE 1</b><br>Welcome to MAXJO TOPUP.
-</div>
-<div class="notice">
-<b>📢 NOTICE 2</b><br>অর্ডার করার আগে UID ভালো করে চেক করুন।
+  📢 <b>NOTICE:</b> MAXJO TOPUP-এ স্বাগতম। অর্ডার করার আগে UID ও প্যাকেজ ভালোভাবে যাচাই করুন।
 </div>
 
-<div class="tabs">
-<button class="active" onclick="openTab('uid',this)">UID TOPUP</button>
-<button onclick="openTab('weekly',this)">WEEKLY</button>
-<button onclick="openTab('monthly',this)">MONTHLY</button>
-</div>
+<main class="container" id="home">
 
-<div id="uid" class="section show">
-<h3>💎 UID TOPUP PACKAGES</h3>
-<div id="diamondList"></div>
-</div>
+<section id="offers">
+  <div class="heading">🎁 SPECIAL OFFER</div>
+  <div class="offer-grid">
+    <div class="offer">
+      <b>🎁 Mystery Box Offer</b>
+      <p>Special offer section</p>
+    </div>
+    <div class="offer">
+      <b>💎 Free Diamonds</b>
+      <p>Special diamond offer</p>
+    </div>
+  </div>
+</section>
 
-<div id="weekly" class="section">
-<h3>📅 WEEKLY PACKAGES</h3>
-<div id="weeklyList"></div>
-</div>
+<section id="categories">
+  <div class="heading">🎮 DIAMONDS TOP UP</div>
+  <div class="categories">
+    <div class="category">
+      <div class="emoji">💎</div>
+      <b>UID TOPUP (BD SERVER)</b>
+      <button onclick="showService('diamond')">View Packages</button>
+    </div>
+    <div class="category">
+      <div class="emoji">📅</div>
+      <b>WEEKLY / MONTHLY</b>
+      <button onclick="showService('weekly')">View Packages</button>
+    </div>
+    <div class="category">
+      <div class="emoji">⭐</div>
+      <b>LEVEL UP PASS</b>
+      <button onclick="showService('monthly')">View Packages</button>
+    </div>
+    <div class="category">
+      <div class="emoji">🎁</div>
+      <b>WEEKLY LITE</b>
+      <button onclick="showService('weekly')">View Packages</button>
+    </div>
+  </div>
+</section>
 
-<div id="monthly" class="section">
-<h3>🌙 MONTHLY PACKAGES</h3>
-<div id="monthlyList"></div>
-</div>
+<section id="diamond" class="service">
+  <h3>💎 UID TOPUP PACKAGES</h3>
+  <div class="packages" id="diamondList"></div>
+</section>
 
-<div class="payment">
-<h3>💳 PAYMENT NUMBERS</h3>
-<p>bKash: <b>01865908732</b>
-<button class="copy" onclick="copyNumber('01865908732')">Copy</button></p>
-<p>Nagad: <b>01627220616</b>
-<button class="copy" onclick="copyNumber('01627220616')">Copy</button></p>
-<p class="small">Send Money করার পর Sender Number ও TrxID দিন।</p>
-</div>
+<section id="weekly" class="service">
+  <h3>📅 WEEKLY PACKAGES</h3>
+  <div class="packages" id="weeklyList"></div>
+</section>
 
-<div class="order">
-<h3>🛒 ORDER FORM</h3>
-<form id="orderForm">
-<input id="uidInput" placeholder="Game UID লিখুন" required>
-<input id="packageInput" placeholder="Selected Package" readonly required>
-<input id="priceInput" placeholder="Price" readonly required>
+<section id="monthly" class="service">
+  <h3>🌙 MONTHLY PACKAGES</h3>
+  <div class="packages" id="monthlyList"></div>
+</section>
 
-<select id="method" required>
-<option value="">Payment Method</option>
-<option>bKash</option>
-<option>Nagad</option>
-</select>
+<section class="service" id="order">
+  <h3>🛒 PLACE YOUR ORDER</h3>
+  <form id="orderForm">
+    <input id="uid" placeholder="Free Fire Player UID" required>
+    <input id="packageName" placeholder="Selected Package" readonly required>
+    <input id="packagePrice" placeholder="Package Price" readonly required>
+    <select id="method" required>
+      <option value="">Select Payment Method</option>
+      <option>bKash</option>
+      <option>Nagad</option>
+    </select>
+    <input id="sender" placeholder="Your Payment Number" required>
+    <input id="trx" placeholder="Transaction ID (TrxID)" required>
+    <button class="submit">SUBMIT ORDER</button>
+  </form>
+  <p id="message"></p>
+</section>
 
-<input id="sender" placeholder="আপনার Payment Number" required>
-<input id="trx" placeholder="Transaction ID (TrxID)" required>
-<button class="submit">SUBMIT ORDER</button>
-</form>
-<div id="message"></div>
-</div>
+<section class="payment" id="payment">
+  <div class="heading">💳 PAYMENT METHODS</div>
+  <div class="payrow">
+    <span>bKash: <b>01865908732</b></span>
+    <button class="copy" onclick="copyText('01865908732')">COPY</button>
+  </div>
+  <div class="payrow">
+    <span>Nagad: <b>01627220616</b></span>
+    <button class="copy" onclick="copyText('01627220616')">COPY</button>
+  </div>
+</section>
 
-<footer style="text-align:center;padding:20px;color:#aaa">
-MAXJO TOPUP © 2026
+<section id="recent">
+  <div class="heading">📦 RECENT ORDERS</div>
+  <div class="recent">এখনো কোনো অর্ডার দেখানোর জন্য যুক্ত করা হয়নি।</div>
+</section>
+
+</main>
+
+<footer>
+  <h2>MAXJO TOPUP</h2>
+  Fast • Secure • Trusted Top Up<br><br>
+  © 2026 MAXJO TOPUP
 </footer>
 
 <script>
@@ -121,48 +191,38 @@ const monthly=[
 ];
 
 function render(data,id){
-document.getElementById(id).innerHTML=data.map(item=>`
-<div class="package">
-<span>${item[0]}<br><b>${item[1]}৳</b></span>
-<button onclick="selectPackage('${item[0]}',${item[1]})">BUY</button>
-</div>`).join("");
+ document.getElementById(id).innerHTML=data.map(p=>`
+ <div class="package">
+ <b>${p[0]}</b>
+ <div class="price">${p[1]}৳</div>
+ <button class="buy" onclick="buy('${p[0]}',${p[1]})">BUY NOW</button>
+ </div>`).join("");
 }
-
 render(diamond,"diamondList");
 render(weekly,"weeklyList");
 render(monthly,"monthlyList");
 
-function openTab(id,button){
-document.querySelectorAll(".section").forEach(s=>s.classList.remove("show"));
-document.getElementById(id).classList.add("show");
-document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
-button.classList.add("active");
+function showService(id){
+ document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-function selectPackage(name,price){
-document.getElementById("packageInput").value=name;
-document.getElementById("priceInput").value=price+" টাকা";
-document.querySelector(".order").scrollIntoView({behavior:"smooth"});
+function buy(name,price){
+ document.getElementById("packageName").value=name;
+ document.getElementById("packagePrice").value=price+" টাকা";
+ document.getElementById("order").style.display="block";
+ document.getElementById("order").scrollIntoView({behavior:"smooth"});
 }
 
-function copyNumber(number){
-if(navigator.clipboard && window.isSecureContext){
-navigator.clipboard.writeText(number).then(()=>alert("নম্বর কপি হয়েছে"));
-}else{
-const t=document.createElement("textarea");
-t.value=number;
-document.body.appendChild(t);
-t.select();
-document.execCommand("copy");
-t.remove();
-alert("নম্বর কপি হয়েছে");
-}
+function copyText(number){
+ navigator.clipboard.writeText(number)
+ .then(()=>alert("নম্বর কপি হয়েছে"))
+ .catch(()=>alert("কপি করা যায়নি। নম্বরটি হাতে কপি করুন।"));
 }
 
 document.getElementById("orderForm").addEventListener("submit",function(e){
-e.preventDefault();
-document.getElementById("message").innerHTML=
-"<p style='color:#ffcc55'>Demo Order: অর্ডার তথ্য নেওয়া হয়েছে। এখনো ডাটাবেজে জমা হয়নি।</p>";
+ e.preventDefault();
+ document.getElementById("message").innerText=
+ "এটি ডেমো। অর্ডার এখনো ডাটাবেজে জমা হচ্ছে না।";
 });
 </script>
 </body>
