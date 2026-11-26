@@ -7,223 +7,241 @@
 <title>MAXJO TOPUP</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#f3f5f9;color:#202535;font-family:Arial,sans-serif}
-header{background:#fff;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px #0001}
-.logo{font-size:21px;font-weight:900;color:#ed344b}
-.logo span{color:#202535}
-.header-btn{background:#ed344b;color:white;border:0;padding:10px 14px;border-radius:8px}
-nav{display:flex;gap:9px;overflow-x:auto;background:white;padding:12px}
-nav a{white-space:nowrap;text-decoration:none;color:#333;font-size:13px;font-weight:bold}
-.notice{background:#fff3d9;color:#765000;padding:13px;margin:12px;border-radius:9px;font-size:13px}
-.container{padding:12px;max-width:850px;margin:auto}
-.heading{font-size:18px;font-weight:800;margin:20px 0 12px}
-.offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
-.offer{background:linear-gradient(130deg,#ed344b,#a91c42);color:white;border-radius:12px;padding:17px;min-height:112px}
-.offer:nth-child(2){background:linear-gradient(130deg,#5736b8,#29236e)}
-.offer b{font-size:17px}
-.offer p{font-size:12px;margin-bottom:0}
-.categories{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.category{background:white;border-radius:11px;padding:16px 10px;text-align:center;box-shadow:0 2px 9px #0001;border:1px solid #eee}
-.category .emoji{font-size:28px}
-.category b{display:block;margin-top:8px;font-size:13px}
-.category button{background:#ed344b;color:white;border:0;border-radius:6px;padding:8px 14px;margin-top:10px}
-.service{background:white;border-radius:11px;padding:14px;margin:12px 0;box-shadow:0 2px 8px #0001}
-.service h3{margin:0 0 12px;font-size:16px}
-.packages{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-.package{border:1px solid #e5e7eb;border-radius:9px;padding:12px;text-align:center}
-.package b{display:block;font-size:14px}
-.price{color:#ed344b;font-weight:800;margin:8px}
-.buy{background:#ed344b;color:white;border:0;border-radius:7px;padding:9px 18px;width:100%}
-.payment{background:white;border-radius:11px;padding:15px;margin:12px 0}
-.payrow{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #eee;padding:11px 0;font-size:14px}
-.copy{border:0;background:#202535;color:white;padding:7px 12px;border-radius:6px}
-input,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;margin:7px 0}
-#order{display:none}
-.submit{background:#ed344b;color:white;border:0;padding:13px;width:100%;border-radius:8px;font-weight:bold}
-.recent{background:white;border-radius:10px;padding:14px;margin:10px 0}
-footer{background:#202535;color:white;text-align:center;padding:25px;margin-top:25px;font-size:13px}
+body{margin:0;background:#091321;color:white;font-family:Arial,sans-serif;padding-bottom:78px}
+header{display:flex;align-items:center;justify-content:space-between;padding:14px;background:#101e32}
+.logo{display:flex;align-items:center;gap:10px;font-weight:bold;font-size:19px}
+.logo-icon{background:#2563eb;padding:10px;border-radius:12px}
+.google{background:white;color:#4285f4;border:0;border-radius:50%;width:38px;height:38px;font-size:23px;font-weight:bold}
+main{padding:14px;max-width:650px;margin:auto}
+.hero{padding:24px 18px;border-radius:18px;background:linear-gradient(130deg,#173c72,#14233d);margin-bottom:15px}
+.hero h1{margin:10px 0;font-size:27px}
+.hero p{color:#cbdcf8;font-size:13px}
+.notice{padding:14px;border-radius:12px;margin:14px 0;background:#12323c;min-height:76px}
+.notice h3{margin:0 0 7px;font-size:15px}
+.notice p{margin:0;color:#dbeafe;font-size:12px}
+.section-title{font-size:17px;margin:22px 0 12px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:#17243b;border-radius:13px;overflow:hidden;cursor:pointer;border:1px solid #263c5c}
+.card img{width:100%;height:105px;object-fit:cover}
+.card-info{padding:12px}
+.card-info b{font-size:14px}
+.card-info p{font-size:11px;color:#9fb2ce;margin:6px 0 0}
+.offer{background:#202c51;border-radius:12px;padding:17px;font-weight:bold}
+.offer:nth-child(2){background:#40234f}
+.payment,.recent{background:#17243b;border-radius:13px;padding:16px;margin-top:12px}
+.payment p,.recent p{color:#a9bad1;font-size:12px}
+footer{text-align:center;color:#8293ad;font-size:12px;padding:20px}
+.bottom-nav{position:fixed;bottom:0;left:0;width:100%;background:#101e32;border-top:1px solid #263a55;display:flex;justify-content:space-around;padding:10px 2px;z-index:10}
+.bottom-nav button{background:none;border:0;color:#aebbd0;font-size:11px;cursor:pointer}
+.bottom-nav button span{display:block;font-size:21px;margin-bottom:4px}
+.bottom-nav button.active{color:#38bdf8}
+.page{display:none}
+.page.active{display:block}
+.package{background:#17243b;padding:13px;margin:9px 0;border-radius:11px;display:flex;justify-content:space-between;align-items:center}
+.buy{background:#2563eb;color:white;border:0;border-radius:8px;padding:9px 13px}
+.back{background:#263b58;color:white;border:0;padding:9px 15px;border-radius:8px;margin-bottom:12px}
+input{width:100%;padding:12px;margin:7px 0;background:#0c192b;border:1px solid #344965;border-radius:8px;color:white}
+.primary{width:100%;padding:13px;background:#2563eb;border:0;border-radius:9px;color:white;font-weight:bold;margin-top:10px}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">MAXJO <span>TOPUP</span></div>
-  <button class="header-btn" onclick="document.getElementById('order').scrollIntoView()">Login / Order</button>
+ <div class="logo"><span class="logo-icon">🎮</span>MAXJO TOPUP</div>
+ <button class="google" onclick="googleLogin()" title="Google Login">G</button>
 </header>
 
-<nav>
-  <a href="#home">HOME</a>
-  <a href="#offers">SPECIAL OFFER</a>
-  <a href="#categories">CATEGORIES</a>
-  <a href="#recent">RECENT ORDERS</a>
-  <a href="#payment">PAYMENT</a>
-</nav>
+<main>
+<section id="home" class="page active">
+ <div class="hero">
+  <small>WELCOME</small>
+  <h1>MAXJO TOPUP</h1>
+  <b>Fast & Easy Free Fire Top Up</b>
+  <p>আপনার পছন্দের প্যাকেজ বেছে নিন।</p>
+ </div>
 
-<div class="notice">
-  📢 <b>NOTICE:</b> MAXJO TOPUP-এ স্বাগতম। অর্ডার করার আগে UID ও প্যাকেজ ভালোভাবে যাচাই করুন।
-</div>
+ <div class="notice" id="notice">
+  <h3>🕒 24 HOURS ACTIVE</h3>
+  <p>আমাদের সার্ভিস ২৪ ঘণ্টা চালু থাকে।</p>
+ </div>
 
-<main class="container" id="home">
+ <h3 class="section-title">SPECIAL OFFERS</h3>
+ <div class="grid">
+  <div class="offer">🎁 SPECIAL OFFER</div>
+  <div class="offer">✨ MYSTERY OFFER</div>
+ </div>
 
-<section id="offers">
-  <div class="heading">🎁 SPECIAL OFFER</div>
-  <div class="offer-grid">
-    <div class="offer">
-      <b>🎁 Mystery Box Offer</b>
-      <p>Special offer section</p>
-    </div>
-    <div class="offer">
-      <b>💎 Free Diamonds</b>
-      <p>Special diamond offer</p>
-    </div>
+ <h3 class="section-title">SELECT YOUR CATEGORY</h3>
+ <div class="grid" id="categories">
+  <div class="card" onclick="showCategory('diamond')">
+   <img src="https://placehold.co/400x200/153b72/ffffff?text=DIAMONDS" alt="Diamond">
+   <div class="card-info"><b>💎 UID TOPUP</b><p>Diamond Packages</p></div>
   </div>
-</section>
-
-<section id="categories">
-  <div class="heading">🎮 DIAMONDS TOP UP</div>
-  <div class="categories">
-    <div class="category">
-      <div class="emoji">💎</div>
-      <b>UID TOPUP (BD SERVER)</b>
-      <button onclick="showService('diamond')">View Packages</button>
-    </div>
-    <div class="category">
-      <div class="emoji">📅</div>
-      <b>WEEKLY / MONTHLY</b>
-      <button onclick="showService('weekly')">View Packages</button>
-    </div>
-    <div class="category">
-      <div class="emoji">⭐</div>
-      <b>LEVEL UP PASS</b>
-      <button onclick="showService('monthly')">View Packages</button>
-    </div>
-    <div class="category">
-      <div class="emoji">🎁</div>
-      <b>WEEKLY LITE</b>
-      <button onclick="showService('weekly')">View Packages</button>
-    </div>
+  <div class="card" onclick="showCategory('weekly')">
+   <img src="https://placehold.co/400x200/153b72/ffffff?text=WEEKLY" alt="Weekly">
+   <div class="card-info"><b>📅 WEEKLY</b><p>Weekly Packages</p></div>
   </div>
-</section>
-
-<section id="diamond" class="service">
-  <h3>💎 UID TOPUP PACKAGES</h3>
-  <div class="packages" id="diamondList"></div>
-</section>
-
-<section id="weekly" class="service">
-  <h3>📅 WEEKLY PACKAGES</h3>
-  <div class="packages" id="weeklyList"></div>
-</section>
-
-<section id="monthly" class="service">
-  <h3>🌙 MONTHLY PACKAGES</h3>
-  <div class="packages" id="monthlyList"></div>
-</section>
-
-<section class="service" id="order">
-  <h3>🛒 PLACE YOUR ORDER</h3>
-  <form id="orderForm">
-    <input id="uid" placeholder="Free Fire Player UID" required>
-    <input id="packageName" placeholder="Selected Package" readonly required>
-    <input id="packagePrice" placeholder="Package Price" readonly required>
-    <select id="method" required>
-      <option value="">Select Payment Method</option>
-      <option>bKash</option>
-      <option>Nagad</option>
-    </select>
-    <input id="sender" placeholder="Your Payment Number" required>
-    <input id="trx" placeholder="Transaction ID (TrxID)" required>
-    <button class="submit">SUBMIT ORDER</button>
-  </form>
-  <p id="message"></p>
-</section>
-
-<section class="payment" id="payment">
-  <div class="heading">💳 PAYMENT METHODS</div>
-  <div class="payrow">
-    <span>bKash: <b>01865908732</b></span>
-    <button class="copy" onclick="copyText('01865908732')">COPY</button>
+  <div class="card" onclick="showCategory('monthly')">
+   <img src="https://placehold.co/400x200/805b19/ffffff?text=MONTHLY" alt="Monthly">
+   <div class="card-info"><b>🌟 MONTHLY</b><p>Monthly Packages</p></div>
   </div>
-  <div class="payrow">
-    <span>Nagad: <b>01627220616</b></span>
-    <button class="copy" onclick="copyText('01627220616')">COPY</button>
+  <div class="card" onclick="showCategory('level')">
+   <img src="https://placehold.co/400x200/183a67/ffffff?text=LEVEL+UP" alt="Level Up">
+   <div class="card-info"><b>🚀 LEVEL UP PASS</b><p>Level Up Packages</p></div>
   </div>
+  <div class="card" onclick="showCategory('lite')">
+   <img src="https://placehold.co/400x200/183a67/ffffff?text=WEEKLY+LITE" alt="Weekly Lite">
+   <div class="card-info"><b>WEEKLY LITE</b><p>Lite Packages</p></div>
+  </div>
+  <div class="card" onclick="showCategory('other')">
+   <img src="https://placehold.co/400x200/183a67/ffffff?text=OTHER+SERVICES" alt="Other">
+   <div class="card-info"><b>OTHER SERVICES</b><p>More Services</p></div>
+  </div>
+ </div>
+
+ <div class="payment">
+  <h3>💳 PAYMENT METHODS</h3>
+  <b>bKash & Nagad</b>
+  <p>অর্ডার করার সময় পেমেন্ট নম্বর দেখানো হবে।</p>
+ </div>
+ <div class="recent">
+  <h3>📋 RECENT ORDERS</h3>
+  <p>এখনো কোনো অর্ডার নেই।</p>
+ </div>
+ <footer>MAXJO TOPUP • Fast • Secure • Reliable</footer>
 </section>
 
-<section id="recent">
-  <div class="heading">📦 RECENT ORDERS</div>
-  <div class="recent">এখনো কোনো অর্ডার দেখানোর জন্য যুক্ত করা হয়নি।</div>
+<section id="categoryPage" class="page">
+ <button class="back" onclick="goHome()">← Back</button>
+ <h2 id="categoryTitle">Packages</h2>
+ <div id="packages"></div>
 </section>
 
+<section id="orders" class="page">
+ <h2>📋 My Orders</h2>
+ <p>আপনার অর্ডারগুলো এখানে দেখা যাবে।</p>
+</section>
+
+<section id="addmoney" class="page">
+ <h2>💰 ADD MONEY</h2>
+ <p>পেমেন্টের তথ্য অর্ডার করার সময় দেখানো হবে।</p>
+ <input placeholder="Amount (৳)" type="number">
+ <input placeholder="Transaction ID">
+ <button class="primary" onclick="alert('পেমেন্ট যাচাইয়ের জন্য Admin প্রয়োজন।')">SUBMIT</button>
+</section>
+
+<section id="profile" class="page">
+ <h2>👤 MY PROFILE</h2>
+ <p id="profileInfo">Google দিয়ে Login করুন।</p>
+ <button class="primary" onclick="googleLogin()">Continue with Google</button>
+</section>
+
+<section id="orderForm" class="page">
+ <button class="back" onclick="goHome()">← Back</button>
+ <h2>PLACE ORDER</h2>
+ <p id="selectedPackage"></p>
+ <input id="gameUID" placeholder="Free Fire Player UID">
+ <input id="gameName" placeholder="Player Name (optional)">
+ <input id="trx" placeholder="Transaction ID (পেমেন্টের পর)">
+ <button class="primary" onclick="submitOrder()">CONFIRM ORDER</button>
+</section>
 </main>
 
-<footer>
-  <h2>MAXJO TOPUP</h2>
-  Fast • Secure • Trusted Top Up<br><br>
-  © 2026 MAXJO TOPUP
-</footer>
+<nav class="bottom-nav">
+ <button class="active" onclick="navigate('home',this)"><span>⌂</span>HOME</button>
+ <button onclick="navigate('orders',this)"><span>▤</span>ORDERS</button>
+ <button onclick="navigate('addmoney',this)"><span>৳</span>ADD MONEY</button>
+ <button onclick="navigate('profile',this)"><span>♙</span>PROFILE</button>
+</nav>
 
 <script>
-const diamond=[
-["115 Diamond",80],["240 Diamond",160],
-["355 Diamond",240],["480 Diamond",320],
-["610 Diamond",400],["850 Diamond",560],
-["1090 Diamond",720],["1240 Diamond",820],
-["1480 Diamond",980],["1850 Diamond",1220],
-["2180 Diamond",1440],["2530 Diamond",1660],
-["3000 Diamond",1960]
+const data={
+ diamond:[
+ ['115 Diamonds',80],['240 Diamonds',160],['355 Diamonds',240],
+ ['480 Diamonds',320],['610 Diamonds',400],['850 Diamonds',560],
+ ['1090 Diamonds',720],['1240 Diamonds',820],['1480 Diamonds',980],
+ ['1850 Diamonds',1220],['2180 Diamonds',1440],['2530 Diamonds',1660],
+ ['3000 Diamonds',1960]
+ ],
+ weekly:[
+ ['Weekly',155],['2X Weekly',310],['3X Weekly',465],
+ ['4X Weekly',620],['Weekly Lite',35],['2X Weekly Lite',70],
+ ['3X Weekly Lite',105],['4X Weekly Lite',140]
+ ],
+ monthly:[
+ ['Monthly',770],['2X Monthly',1540],['3X Monthly',2310],
+ ['4X Monthly',3080],['Monthly + Weekly',925],
+ ['2X Monthly + Weekly',1695],['3X Monthly + Weekly',2465],
+ ['4X Monthly + Weekly',3235]
+ ],
+ level:[],
+ lite:[],
+ other:[]
+};
+let chosen=null;
+const titles={
+ diamond:'💎 UID TOPUP',weekly:'📅 WEEKLY',
+ monthly:'🌟 MONTHLY',level:'🚀 LEVEL UP PASS',
+ lite:'WEEKLY LITE',other:'OTHER SERVICES'
+};
+
+function navigate(id,btn){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+ window.scrollTo(0,0);
+}
+function goHome(){
+ navigate('home',document.querySelector('.bottom-nav button'));
+}
+function showCategory(key){
+ navigate('categoryPage');
+ document.getElementById('categoryTitle').textContent=titles[key];
+ const box=document.getElementById('packages');
+ box.innerHTML='';
+ if(!data[key].length){
+  box.innerHTML='<p>এই ক্যাটাগরির প্যাকেজ শিগগিরই যোগ করা হবে।</p>';
+  return;
+ }
+ data[key].forEach(p=>{
+  const el=document.createElement('div');
+  el.className='package';
+  const name=document.createElement('b');
+  name.textContent=p[0]+' — '+p[1]+'৳';
+  const btn=document.createElement('button');
+  btn.className='buy';
+  btn.textContent='BUY NOW';
+  btn.onclick=()=>openOrder(p);
+  el.append(name,btn);
+  box.appendChild(el);
+ });
+}
+function openOrder(p){
+ chosen=p;
+ document.getElementById('selectedPackage').textContent=p[0]+' — '+p[1]+'৳';
+ navigate('orderForm');
+}
+function submitOrder(){
+ const uid=document.getElementById('gameUID').value.trim();
+ if(!uid){alert('Player UID দিন।');return;}
+ alert('অর্ডার গ্রহণের জন্য Firebase Backend ও Admin System সংযুক্ত করতে হবে।');
+}
+const noticeList=[
+ ['🕒 24 HOURS ACTIVE','আমাদের সার্ভিস ২৪ ঘণ্টা চালু থাকে।','#12323c'],
+ ['🔞 18+ AGE NOTICE','১৮ বছরের কম বয়সীদের ডায়মন্ড টপ-আপ করা হবে না।','#3b281b']
 ];
+let noticeIndex=0;
+setInterval(()=>{
+ noticeIndex=(noticeIndex+1)%noticeList.length;
+ const el=document.getElementById('notice');
+ el.style.background=noticeList[noticeIndex][2];
+ el.innerHTML='<h3>'+noticeList[noticeIndex][0]+'</h3><p>'+noticeList[noticeIndex][1]+'</p>';
+},2000);
 
-const weekly=[
-["Weekly",155],["2X Weekly",310],
-["3X Weekly",465],["4X Weekly",620],
-["Weekly Lite",35],["2X Weekly Lite",70],
-["3X Weekly Lite",105],["4X Weekly Lite",140]
-];
-
-const monthly=[
-["Monthly",770],["2X Monthly",1540],
-["3X Monthly",2310],["4X Monthly",3080],
-["Monthly + Weekly",925],
-["2X Monthly + Weekly",1695],
-["3X Monthly + Weekly",2465],
-["4X Monthly + Weekly",3235]
-];
-
-function render(data,id){
- document.getElementById(id).innerHTML=data.map(p=>`
- <div class="package">
- <b>${p[0]}</b>
- <div class="price">${p[1]}৳</div>
- <button class="buy" onclick="buy('${p[0]}',${p[1]})">BUY NOW</button>
- </div>`).join("");
+function googleLogin(){
+ alert('Google Login চালু করতে Firebase Authentication সেটআপ প্রয়োজন।');
 }
-render(diamond,"diamondList");
-render(weekly,"weeklyList");
-render(monthly,"monthlyList");
-
-function showService(id){
- document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
-
-function buy(name,price){
- document.getElementById("packageName").value=name;
- document.getElementById("packagePrice").value=price+" টাকা";
- document.getElementById("order").style.display="block";
- document.getElementById("order").scrollIntoView({behavior:"smooth"});
-}
-
-function copyText(number){
- navigator.clipboard.writeText(number)
- .then(()=>alert("নম্বর কপি হয়েছে"))
- .catch(()=>alert("কপি করা যায়নি। নম্বরটি হাতে কপি করুন।"));
-}
-
-document.getElementById("orderForm").addEventListener("submit",function(e){
- e.preventDefault();
- document.getElementById("message").innerText=
- "এটি ডেমো। অর্ডার এখনো ডাটাবেজে জমা হচ্ছে না।";
-});
 </script>
 </body>
 </html>
