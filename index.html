@@ -3,165 +3,166 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAXJO TOPUP</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#09090d;color:#fff;font-family:Arial,sans-serif}
-header{background:linear-gradient(135deg,#79001f,#16060c);padding:24px;text-align:center}
-.logo{font-size:28px;font-weight:900;color:#ff426d}
-header p{font-size:12px}
-main{max-width:600px;margin:auto;padding:12px}
-.box{background:#17171f;border:1px solid #30303b;border-radius:15px;padding:15px;margin:15px 0}
-h2{color:#ff5279;font-size:18px}
-input,select{width:100%;padding:13px;margin:7px 0;background:#0b0b11;color:white;border:1px solid #444;border-radius:9px}
-button{width:100%;padding:13px;margin-top:8px;background:#e11d48;color:white;border:0;border-radius:9px;font-weight:bold}
-.notice{background:#2a1018;padding:12px;border-radius:10px;margin:8px 0;font-size:14px}
-.item{display:flex;justify-content:space-between;border-bottom:1px solid #333;padding:10px 0}
-.small{font-size:12px;color:#aaa}
-#msg{padding:10px;text-align:center}
-footer{text-align:center;color:#777;padding:20px}
+body{margin:0;background:#10121a;color:white;font-family:Arial,sans-serif}
+header{text-align:center;padding:22px;background:#191c27}
+header h1{color:#ff4141;margin:0}
+header p{color:#bbb}
+.notice{margin:12px;padding:14px;background:#222838;border-radius:12px;border-left:4px solid #ff4141}
+.tabs{display:flex;gap:8px;padding:10px}
+.tabs button{flex:1;padding:12px 5px;border:0;border-radius:9px;background:#282d3c;color:white;font-weight:bold}
+.tabs button.active{background:#ff4141}
+.container{padding:12px}
+.package{background:#202432;padding:13px;margin:9px 0;border-radius:10px;display:flex;justify-content:space-between;align-items:center}
+.package button{background:#ff4141;color:white;border:0;border-radius:7px;padding:9px}
+input,select{width:100%;padding:12px;margin:7px 0;background:#202432;color:white;border:1px solid #444;border-radius:8px}
+.submit{width:100%;padding:14px;background:#ff4141;color:white;border:0;border-radius:9px;font-weight:bold}
+.section{display:none}
+.section.show{display:block}
+footer{text-align:center;padding:20px;color:#aaa}
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo">MAXJO TOPUP</div>
-<p>Fast • Secure • Gaming Top Up</p>
+<h1>MAXJO TOPUP</h1>
+<p>Fast & Trusted Diamond Top Up</p>
 </header>
 
-<main>
-
-<div class="box">
-<h2>📢 Notice 1</h2>
-<div class="notice">স্বাগতম MAXJO TOPUP-এ। অর্ডার করার আগে UID ও প্যাকেজ মিলিয়ে নিন।</div>
+<div class="notice">
+<b>NOTICE 1</b><br>
+Welcome to MAXJO TOPUP. Order carefully.
 </div>
 
-<div class="box">
-<h2>📢 Notice 2</h2>
-<div class="notice">পেমেন্ট করার আগে সঠিক নম্বর ও পরিমাণ নিশ্চিত করুন।</div>
+<div class="notice">
+<b>NOTICE 2</b><br>
+Payment করার আগে UID ভালো করে চেক করুন।
 </div>
 
-<div class="box">
-<h2>💎 Diamond Offer</h2>
-<div class="item"><span>115 Diamond</span><b>80৳</b></div>
-<div class="item"><span>240 Diamond</span><b>160৳</b></div>
-<div class="item"><span>355 Diamond</span><b>240৳</b></div>
-<div class="item"><span>480 Diamond</span><b>320৳</b></div>
-<div class="item"><span>610 Diamond</span><b>400৳</b></div>
-<div class="item"><span>850 Diamond</span><b>560৳</b></div>
-<div class="item"><span>1090 Diamond</span><b>720৳</b></div>
-<div class="item"><span>1240 Diamond</span><b>820৳</b></div>
-<div class="item"><span>1480 Diamond</span><b>980৳</b></div>
-<div class="item"><span>1850 Diamond</span><b>1220৳</b></div>
-<div class="item"><span>2180 Diamond</span><b>1440৳</b></div>
-<div class="item"><span>2530 Diamond</span><b>1660৳</b></div>
-<div class="item"><span>3000 Diamond</span><b>1960৳</b></div>
+<div class="tabs">
+<button class="active" onclick="tab('diamond',this)">Diamond</button>
+<button onclick="tab('weekly',this)">Weekly</button>
+<button onclick="tab('monthly',this)">Monthly</button>
 </div>
 
-<div class="box">
-<h2>📅 Monthly Offer</h2>
-<div class="item"><span>Monthly</span><b>770৳</b></div>
-<div class="item"><span>2X Monthly</span><b>1540৳</b></div>
-<div class="item"><span>3X Monthly</span><b>2310৳</b></div>
-<div class="item"><span>4X Monthly</span><b>3080৳</b></div>
-<div class="item"><span>Monthly + Weekly</span><b>925৳</b></div>
-<div class="item"><span>2X Monthly + Weekly</span><b>1695৳</b></div>
-<div class="item"><span>3X Monthly + Weekly</span><b>2465৳</b></div>
-<div class="item"><span>4X Monthly + Weekly</span><b>3235৳</b></div>
+<div class="container">
+
+<div id="diamond" class="section show">
+<h3>💎 Diamond Packages</h3>
+<div id="diamonds"></div>
 </div>
 
-<div class="box">
-<h2>🗓 Weekly Offer</h2>
-<div class="item"><span>Weekly</span><b>155৳</b></div>
-<div class="item"><span>2X Weekly</span><b>310৳</b></div>
-<div class="item"><span>3X Weekly</span><b>465৳</b></div>
-<div class="item"><span>4X Weekly</span><b>620৳</b></div>
-<div class="item"><span>Weekly Lite</span><b>35৳</b></div>
-<div class="item"><span>2X Weekly Lite</span><b>70৳</b></div>
-<div class="item"><span>3X Weekly Lite</span><b>105৳</b></div>
-<div class="item"><span>4X Weekly Lite</span><b>140৳</b></div>
+<div id="weekly" class="section">
+<h3>📅 Weekly Packages</h3>
+<div id="weeklies"></div>
 </div>
 
-<div class="box">
-<h2>🛒 Order Form</h2>
+<div id="monthly" class="section">
+<h3>🌙 Monthly Packages</h3>
+<div id="monthlies"></div>
+</div>
 
-<label>Game UID</label>
-<input id="uid" placeholder="Game UID লিখুন">
+<h3>🛒 Order Form</h3>
+<form id="orderForm">
+<input id="uid" placeholder="Game UID" required>
+<input id="pkg" placeholder="Selected Package" readonly required>
+<input id="price" placeholder="Price" readonly required>
 
-<label>Package</label>
-<select id="pkg">
-<option value="">Package নির্বাচন করুন</option>
-<option>115 Diamond - 80৳</option>
-<option>240 Diamond - 160৳</option>
-<option>355 Diamond - 240৳</option>
-<option>480 Diamond - 320৳</option>
-<option>610 Diamond - 400৳</option>
-<option>850 Diamond - 560৳</option>
-<option>1090 Diamond - 720৳</option>
-<option>1240 Diamond - 820৳</option>
-<option>1480 Diamond - 980৳</option>
-<option>1850 Diamond - 1220৳</option>
-<option>2180 Diamond - 1440৳</option>
-<option>2530 Diamond - 1660৳</option>
-<option>3000 Diamond - 1960৳</option>
-<option>Monthly - 770৳</option>
-<option>2X Monthly - 1540৳</option>
-<option>3X Monthly - 2310৳</option>
-<option>4X Monthly - 3080৳</option>
-<option>Weekly - 155৳</option>
-<option>2X Weekly - 310৳</option>
-<option>3X Weekly - 465৳</option>
-<option>4X Weekly - 620৳</option>
-<option>Weekly Lite - 35৳</option>
-<option>2X Weekly Lite - 70৳</option>
-<option>3X Weekly Lite - 105৳</option>
-<option>4X Weekly Lite - 140৳</option>
-</select>
-
-<label>Payment Method</label>
-<select id="method">
+<select id="method" required>
+<option value="">Payment Method</option>
 <option>bKash</option>
 <option>Nagad</option>
 </select>
 
-<label>Payment Sender Number</label>
-<input id="sender" placeholder="পেমেন্ট নম্বর">
+<input id="sender" placeholder="আপনার Payment Number" required>
+<input id="trx" placeholder="Transaction ID (TrxID)" required>
 
-<label>Transaction ID</label>
-<input id="trx" placeholder="TrxID লিখুন">
+<button class="submit" type="submit">Submit Order</button>
+</form>
 
-<button onclick="submitOrder()">Submit Order</button>
-<div id="msg"></div>
-<p class="small">এই নমুনায় অর্ডারটি শুধু ব্রাউজারে পরীক্ষা করা হয়। প্রকৃত পেমেন্ট যাচাই বা সার্ভারে অর্ডার জমা হয় না।</p>
+<div id="result"></div>
+
 </div>
 
-<div class="box">
-<h2>☎ Contact</h2>
-<a href="https://wa.me/8801610570290" style="color:#ff6685">WhatsApp Support</a>
-</div>
-
-<footer>MAXJO TOPUP © 2026</footer>
-</main>
+<footer>
+MAXJO TOPUP © 2026
+</footer>
 
 <script>
-function submitOrder(){
- const uid=document.getElementById("uid").value.trim();
- const pkg=document.getElementById("pkg").value;
- const sender=document.getElementById("sender").value.trim();
- const trx=document.getElementById("trx").value.trim();
- const msg=document.getElementById("msg");
+const diamondData=[
+["115 Diamond",80],
+["240 Diamond",160],
+["355 Diamond",240],
+["480 Diamond",320],
+["610 Diamond",400],
+["850 Diamond",560],
+["1090 Diamond",720],
+["1240 Diamond",820],
+["1480 Diamond",980],
+["1850 Diamond",1220],
+["2180 Diamond",1440],
+["2530 Diamond",1660],
+["3000 Diamond",1960]
+];
 
- if(!uid||!pkg||!sender||!trx){
-   msg.style.color="#ff5477";
-   msg.textContent="সব তথ্য পূরণ করুন!";
-   return;
- }
+const weeklyData=[
+["Weekly",155],
+["2X Weekly",310],
+["3X Weekly",465],
+["4X Weekly",620],
+["Weekly Lite",35],
+["2X Weekly Lite",70],
+["3X Weekly Lite",105],
+["4X Weekly Lite",140]
+];
 
- msg.style.color="#ffc857";
- msg.textContent="অর্ডারটি Demo হিসেবে পূরণ হয়েছে। প্রকৃত পেমেন্ট যাচাই হয়নি।";
+const monthlyData=[
+["Monthly",770],
+["2X Monthly",1540],
+["3X Monthly",2310],
+["4X Monthly",3080],
+["Monthly + Weekly",925],
+["2X Monthly + Weekly",1695],
+["3X Monthly + Weekly",2465],
+["4X Monthly + Weekly",3235]
+];
+
+function render(list,id){
+document.getElementById(id).innerHTML=list.map(p=>
+`<div class="package">
+<span>${p[0]} - ${p[1]}৳</span>
+<button onclick="choose('${p[0]}',${p[1]})">Buy</button>
+</div>`
+).join("");
 }
-</script>
 
+render(diamondData,"diamonds");
+render(weeklyData,"weeklies");
+render(monthlyData,"monthlies");
+
+function tab(id,btn){
+document.querySelectorAll(".section").forEach(x=>x.classList.remove("show"));
+document.getElementById(id).classList.add("show");
+document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));
+btn.classList.add("active");
+}
+
+function choose(name,price){
+document.getElementById("pkg").value=name;
+document.getElementById("price").value=price+" টাকা";
+document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
+}
+
+document.getElementById("orderForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+document.getElementById("result").innerHTML=
+"<div class='notice'>অর্ডারের তথ্য প্রস্তুত হয়েছে। Demo সংস্করণে অর্ডার ডাটাবেজে জমা হয় না।</div>";
+
+});
+</script>
 </body>
 </html>
