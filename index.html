@@ -5,89 +5,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAXJO TOPUP</title>
-
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;background:#090d18;color:#fff;
- font-family:Arial,sans-serif;padding-bottom:80px
-}
-header{
- background:#111a2b;padding:17px;display:flex;
- justify-content:space-between;align-items:center;
- border-bottom:1px solid #263650
-}
+body{margin:0;background:#090d18;color:#fff;font-family:Arial,sans-serif;padding-bottom:80px}
+header{background:#111a2b;padding:17px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #263650}
 .logo{font-size:23px;font-weight:900;color:#35d5ff}
-.google{
- background:#fff;color:#4285f4;border:0;
- border-radius:50%;width:36px;height:36px;
- font-size:22px;font-weight:bold
-}
+.google{background:#fff;color:#4285f4;border:0;border-radius:50%;width:36px;height:36px;font-size:22px;font-weight:bold}
 .container{padding:15px;max-width:650px;margin:auto}
-.hero{
- background:linear-gradient(120deg,#123b67,#16203c);
- padding:24px;border-radius:15px;margin:15px 0
-}
+.hero{background:linear-gradient(120deg,#123b67,#16203c);padding:24px;border-radius:15px;margin:15px 0}
 .hero h2{margin:0 0 8px;color:#48dfff}
-.notice{
- background:#17253c;border:1px solid #294968;
- padding:13px;border-radius:10px;text-align:center;
- color:#55dcff;margin:14px 0
-}
+.notice{background:#17253c;border:1px solid #294968;padding:13px;border-radius:10px;text-align:center;color:#55dcff;margin:14px 0}
 .section-title{font-size:18px;margin:22px 0 12px}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.category{
- background:#151e30;border:1px solid #293a55;
- border-radius:12px;overflow:hidden;cursor:pointer
-}
+.category{background:#151e30;border:1px solid #293a55;border-radius:12px;overflow:hidden;cursor:pointer}
 .category img{width:100%;height:105px;object-fit:cover}
 .category div{padding:12px;text-align:center;font-weight:bold}
-.card{
- background:#151e30;padding:15px;border-radius:12px;
- margin-bottom:12px;border:1px solid #293a55
-}
+.card{background:#151e30;padding:15px;border-radius:12px;margin-bottom:12px;border:1px solid #293a55}
 .package{display:flex;justify-content:space-between;align-items:center;gap:8px}
 .price{color:#42e4bd;font-weight:bold}
 button{cursor:pointer}
-.buy{
- background:#08a9d6;color:white;border:0;
- border-radius:8px;padding:10px 16px;font-weight:bold
-}
-.back{
- background:#293a55;color:white;border:0;
- padding:10px 15px;border-radius:8px;margin-bottom:12px
-}
+.buy{background:#08a9d6;color:white;border:0;border-radius:8px;padding:10px 16px;font-weight:bold}
+.back{background:#293a55;color:white;border:0;padding:10px 15px;border-radius:8px;margin-bottom:12px}
 .hidden{display:none!important}
-input,select{
- width:100%;padding:13px;margin:8px 0;
- background:#0d1627;border:1px solid #344762;
- border-radius:8px;color:white
-}
-.copy{
- background:#168e72;color:white;border:0;
- padding:9px 13px;border-radius:7px
-}
-.payrow{
- display:flex;align-items:center;justify-content:space-between;
- background:#0d1627;padding:10px;border-radius:8px;margin:8px 0
-}
-.bottom{
- position:fixed;bottom:0;left:0;right:0;
- background:#111a2b;display:flex;justify-content:space-around;
- padding:12px 3px;border-top:1px solid #293a55;z-index:5
-}
+input,select{width:100%;padding:13px;margin:8px 0;background:#0d1627;border:1px solid #344762;border-radius:8px;color:white}
+.copy{background:#168e72;color:white;border:0;padding:9px 13px;border-radius:7px}
+.payrow{display:flex;align-items:center;justify-content:space-between;background:#0d1627;padding:10px;border-radius:8px;margin:8px 0;gap:10px}
+.bottom{position:fixed;bottom:0;left:0;right:0;background:#111a2b;display:flex;justify-content:space-around;padding:12px 3px;border-top:1px solid #293a55;z-index:5}
 .bottom button{background:none;border:0;color:#c4d0e2;font-size:12px}
 .bottom button span{display:block;font-size:19px;margin-bottom:4px}
 .bottom button.active{color:#39d9ff}
 footer{text-align:center;color:#8291a8;padding:25px;font-size:13px}
+.form-title{color:#48dfff;margin-top:18px}
 </style>
 </head>
-
 <body>
 
 <header>
  <div class="logo">MAXJO TOPUP</div>
- <button class="google" onclick="alert('Google Login চালু করতে Firebase Authentication সেটআপ করতে হবে।')">G</button>
+ <button class="google" onclick="alert('Google Login চালু করতে Firebase Authentication প্রয়োজন।')">G</button>
 </header>
 
 <main class="container">
@@ -99,9 +54,7 @@ footer{text-align:center;color:#8291a8;padding:25px;font-size:13px}
   <small>আপনার পছন্দের প্যাকেজ বেছে নিন</small>
  </div>
 
- <div class="notice" id="notice">
-  24 HOURS ACTIVE — আমাদের সার্ভিস ২৪ ঘণ্টা চালু থাকে।
- </div>
+ <div class="notice" id="notice">24 HOURS ACTIVE — আমাদের সার্ভিস ২৪ ঘণ্টা চালু থাকে।</div>
 
  <h3 class="section-title">🔥 Special Offers</h3>
  <div class="grid">
@@ -111,43 +64,34 @@ footer{text-align:center;color:#8291a8;padding:25px;font-size:13px}
 
  <h3 class="section-title">🎮 Top Up Categories</h3>
  <div class="grid">
-
   <div class="category" onclick="showCategory('uid')">
    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500" alt="Diamond">
    <div>💎 UID TOPUP</div>
   </div>
-
   <div class="category" onclick="showCategory('weekly')">
    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500" alt="Weekly">
    <div>📅 WEEKLY</div>
   </div>
-
   <div class="category" onclick="showCategory('monthly')">
    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?w=500" alt="Monthly">
    <div>🌙 MONTHLY</div>
   </div>
-
   <div class="category" onclick="showCategory('level')">
    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500" alt="Level Up">
    <div>🚀 LEVEL UP PASS</div>
   </div>
-
   <div class="category" onclick="showCategory('lite')">
    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500" alt="Weekly Lite">
    <div>⚡ WEEKLY LITE</div>
   </div>
-
   <div class="category" onclick="showCategory('other')">
    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500" alt="Other Services">
    <div>🛠 OTHER SERVICES</div>
   </div>
-
  </div>
 
  <h3 class="section-title">📦 Recent Orders</h3>
- <div class="card" style="text-align:center;color:#9aabc2">
-  এখনো কোনো অর্ডার নেই।
- </div>
+ <div class="card" style="text-align:center;color:#9aabc2">এখনো কোনো অর্ডার নেই।</div>
 </section>
 
 <section id="products" class="hidden">
@@ -156,68 +100,86 @@ footer{text-align:center;color:#8291a8;padding:25px;font-size:13px}
  <div id="packageList"></div>
 </section>
 
+<!-- ORDER FORM -->
 <section id="order" class="hidden">
  <button class="back" onclick="goHome()">← Back</button>
- <h2>অর্ডার করুন</h2>
-
+ <h2>🛒 অর্ডার করুন</h2>
  <div class="card">
   <p>প্যাকেজ: <b id="selectedPackage"></b></p>
   <p>মূল্য: <b class="price" id="selectedPrice"></b></p>
 
-  <h3>Player UID</h3>
+  <h3 class="form-title">Player UID</h3>
   <input id="playerID" placeholder="আপনার Player UID লিখুন">
 
-  <h3>পেমেন্ট মাধ্যম নির্বাচন করুন</h3>
-  <select id="paymentMethod" onchange="showPaymentNumber()">
+  <h3 class="form-title">পেমেন্ট মাধ্যম</h3>
+  <select id="paymentMethod" onchange="showPaymentNumber('order')">
    <option value="">পেমেন্ট মাধ্যম নির্বাচন করুন</option>
    <option value="bKash">bKash</option>
    <option value="Nagad">Nagad</option>
   </select>
 
-  <div id="paymentNumber" class="hidden">
-   <p id="paymentTitle"></p>
+  <div id="orderPaymentNumber" class="hidden">
+   <p id="orderPaymentTitle"></p>
    <div class="payrow">
-    <b id="paymentNumberText"></b>
-    <button class="copy" onclick="copyPaymentNumber()">Copy</button>
+    <b id="orderPaymentText"></b>
+    <button class="copy" onclick="copyNumber('orderPaymentText')">Copy</button>
    </div>
   </div>
 
+  <h3 class="form-title">Transaction ID</h3>
   <input id="trx" placeholder="Transaction ID লিখুন">
 
-  <button class="buy" style="width:100%" onclick="submitOrder()">
-   অর্ডার জমা দিন
-  </button>
-
-  <small style="color:#9aabc2">
-   এটি প্রাথমিক ডেমো। সত্যিকারের অর্ডার গ্রহণ ও সংরক্ষণের জন্য নিরাপদ ব্যাকএন্ড প্রয়োজন।
-  </small>
+  <button class="buy" style="width:100%" onclick="submitOrder()">অর্ডার জমা দিন</button>
+  <small style="color:#9aabc2">এটি ডেমো ফর্ম। বাস্তব অর্ডার সংরক্ষণের জন্য ব্যাকএন্ড প্রয়োজন।</small>
  </div>
 </section>
 
+<!-- MY ORDERS -->
 <section id="orders" class="hidden">
  <h2>📦 My Orders</h2>
  <div class="card">এখনো কোনো অর্ডার নেই।</div>
 </section>
 
+<!-- ADD MONEY FORM -->
 <section id="addmoney" class="hidden">
  <h2>💰 Add Money</h2>
  <div class="card">
-  <p>bKash: 01865908732</p>
-  <p>Nagad: 01627220616</p>
-  <input placeholder="টাকার পরিমাণ">
-  <input placeholder="Transaction ID">
-  <button class="buy" onclick="alert('Add Money চালু করতে ব্যাকএন্ড প্রয়োজন।')">Submit</button>
+  <h3 class="form-title">টাকার পরিমাণ</h3>
+  <input id="addAmount" type="number" min="1" placeholder="কত টাকা Add করবেন?">
+
+  <h3 class="form-title">পেমেন্ট মাধ্যম নির্বাচন করুন</h3>
+  <select id="addMethod" onchange="showPaymentNumber('add')">
+   <option value="">পেমেন্ট মাধ্যম নির্বাচন করুন</option>
+   <option value="bKash">bKash</option>
+   <option value="Nagad">Nagad</option>
+  </select>
+
+  <div id="addPaymentNumber" class="hidden">
+   <p id="addPaymentTitle"></p>
+   <div class="payrow">
+    <b id="addPaymentText"></b>
+    <button class="copy" onclick="copyNumber('addPaymentText')">Copy</button>
+   </div>
+  </div>
+
+  <h3 class="form-title">Transaction ID</h3>
+  <input id="addTrx" placeholder="Transaction ID লিখুন">
+
+  <button class="buy" style="width:100%" onclick="submitAddMoney()">Submit Request</button>
+
+  <p style="color:#9aabc2;font-size:12px">
+   টাকা জমার অনুরোধ যাচাই করে অনুমোদনের জন্য নিরাপদ সার্ভার ও Admin Panel প্রয়োজন।
+  </p>
  </div>
 </section>
 
+<!-- PROFILE -->
 <section id="profile" class="hidden">
  <h2>👤 My Profile</h2>
  <div class="card">
   <p>MAXJO TOPUP Account</p>
   <p>Login / Register</p>
-  <button class="buy" onclick="alert('Firebase Authentication সেটআপ করতে হবে।')">
-   Login with Google
-  </button>
+  <button class="buy" onclick="alert('Firebase Authentication সেটআপ করতে হবে।')">Login with Google</button>
  </div>
 </section>
 
@@ -226,43 +188,33 @@ footer{text-align:center;color:#8291a8;padding:25px;font-size:13px}
 <footer>© 2026 MAXJO TOPUP | All Rights Reserved</footer>
 
 <nav class="bottom">
- <button class="active" onclick="navigate('home',this)">
-  <span>🏠</span>HOME
- </button>
- <button onclick="navigate('orders',this)">
-  <span>📦</span>ORDERS
- </button>
- <button onclick="navigate('addmoney',this)">
-  <span>💰</span>ADD MONEY
- </button>
- <button onclick="navigate('profile',this)">
-  <span>👤</span>PROFILE
- </button>
+ <button class="active" onclick="navigate('home',this)"><span>🏠</span>HOME</button>
+ <button onclick="navigate('orders',this)"><span>📦</span>ORDERS</button>
+ <button onclick="navigate('addmoney',this)"><span>💰</span>ADD MONEY</button>
+ <button onclick="navigate('profile',this)"><span>👤</span>PROFILE</button>
 </nav>
 
 <script>
-const packages = {
+const packages={
  uid:[
-  ['115 Diamonds',80],['240 Diamonds',160],['355 Diamonds',240],
-  ['480 Diamonds',320],['610 Diamonds',400],['850 Diamonds',560],
-  ['1090 Diamonds',720],['1240 Diamonds',820],['1480 Diamonds',980],
-  ['1850 Diamonds',1220],['2180 Diamonds',1440],
-  ['2530 Diamonds',1660],['3000 Diamonds',1960]
+ ['115 Diamonds',80],['240 Diamonds',160],['355 Diamonds',240],
+ ['480 Diamonds',320],['610 Diamonds',400],['850 Diamonds',560],
+ ['1090 Diamonds',720],['1240 Diamonds',820],['1480 Diamonds',980],
+ ['1850 Diamonds',1220],['2180 Diamonds',1440],
+ ['2530 Diamonds',1660],['3000 Diamonds',1960]
  ],
  weekly:[
-  ['Weekly',155],['2X Weekly',310],
-  ['3X Weekly',465],['4X Weekly',620]
+ ['Weekly',155],['2X Weekly',310],['3X Weekly',465],['4X Weekly',620]
  ],
  monthly:[
-  ['Monthly',770],['2X Monthly',1540],['3X Monthly',2310],
-  ['4X Monthly',3080],['Monthly + Weekly',925],
-  ['2X Monthly + Weekly',1695],
-  ['3X Monthly + Weekly',2465],
-  ['4X Monthly + Weekly',3235]
+ ['Monthly',770],['2X Monthly',1540],['3X Monthly',2310],
+ ['4X Monthly',3080],['Monthly + Weekly',925],
+ ['2X Monthly + Weekly',1695],['3X Monthly + Weekly',2465],
+ ['4X Monthly + Weekly',3235]
  ],
  lite:[
-  ['Weekly Lite',35],['2X Weekly Lite',70],
-  ['3X Weekly Lite',105],['4X Weekly Lite',140]
+ ['Weekly Lite',35],['2X Weekly Lite',70],
+ ['3X Weekly Lite',105],['4X Weekly Lite',140]
  ],
  level:[],
  other:[]
@@ -343,21 +295,29 @@ function openOrder(name,price){
 
  hideAll();
  document.getElementById('order').classList.remove('hidden');
-
  document.getElementById('selectedPackage').textContent=name;
  document.getElementById('selectedPrice').textContent=price+'৳';
 
  document.getElementById('playerID').value='';
  document.getElementById('paymentMethod').value='';
  document.getElementById('trx').value='';
- document.getElementById('paymentNumber').classList.add('hidden');
+ document.getElementById('orderPaymentNumber').classList.add('hidden');
 }
 
-function showPaymentNumber(){
- const method=document.getElementById('paymentMethod').value;
- const box=document.getElementById('paymentNumber');
- const title=document.getElementById('paymentTitle');
- const number=document.getElementById('paymentNumberText');
+function showPaymentNumber(form){
+ const method=document.getElementById(
+  form==='order'?'paymentMethod':'addMethod'
+ ).value;
+
+ const box=document.getElementById(
+  form==='order'?'orderPaymentNumber':'addPaymentNumber'
+ );
+ const title=document.getElementById(
+  form==='order'?'orderPaymentTitle':'addPaymentTitle'
+ );
+ const number=document.getElementById(
+  form==='order'?'orderPaymentText':'addPaymentText'
+ );
 
  box.classList.add('hidden');
 
@@ -373,12 +333,10 @@ function showPaymentNumber(){
  }
 }
 
-function copyPaymentNumber(){
- const number=document.getElementById('paymentNumberText').textContent;
- copyText(number);
-}
+function copyNumber(elementID){
+ const number=document.getElementById(elementID).textContent;
+ if(!number)return;
 
-function copyText(number){
  if(navigator.clipboard && window.isSecureContext){
   navigator.clipboard.writeText(number)
    .then(()=>alert('নম্বর কপি হয়েছে!'))
@@ -403,12 +361,25 @@ function submitOrder(){
  const method=document.getElementById('paymentMethod').value;
  const trx=document.getElementById('trx').value.trim();
 
- if(!uid || !method || !trx){
+ if(!uid||!method||!trx){
   alert('সব তথ্য পূরণ করুন।');
   return;
  }
 
- alert('ডেমো অর্ডার ফর্ম পূরণ হয়েছে। সত্যিকারের অর্ডারের জন্য নিরাপদ সার্ভার প্রয়োজন।');
+ alert('ডেমো অর্ডার ফর্ম পূরণ হয়েছে। বাস্তব অর্ডার গ্রহণের জন্য সার্ভার সংযোগ প্রয়োজন।');
+}
+
+function submitAddMoney(){
+ const amount=document.getElementById('addAmount').value.trim();
+ const method=document.getElementById('addMethod').value;
+ const trx=document.getElementById('addTrx').value.trim();
+
+ if(!amount||Number(amount)<=0||!method||!trx){
+  alert('সঠিক টাকার পরিমাণ, পেমেন্ট মাধ্যম ও Transaction ID দিন।');
+  return;
+ }
+
+ alert('ডেমো Add Money Request তৈরি হয়েছে। Admin Approval ও Wallet Balance চালু করতে নিরাপদ ব্যাকএন্ড প্রয়োজন।');
 }
 
 const notices=[
@@ -422,6 +393,5 @@ setInterval(()=>{
  document.getElementById('notice').textContent=notices[noticeIndex];
 },2000);
 </script>
-
 </body>
 </html>
