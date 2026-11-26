@@ -3,73 +3,78 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MAXJO TOPUP</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#10121a;color:white;font-family:Arial,sans-serif}
-header{text-align:center;padding:22px;background:#191c27}
-header h1{color:#ff4141;margin:0}
-header p{color:#bbb}
-.notice{margin:12px;padding:14px;background:#222838;border-radius:12px;border-left:4px solid #ff4141}
-.tabs{display:flex;gap:8px;padding:10px}
-.tabs button{flex:1;padding:12px 5px;border:0;border-radius:9px;background:#282d3c;color:white;font-weight:bold}
-.tabs button.active{background:#ff4141}
-.container{padding:12px}
-.package{background:#202432;padding:13px;margin:9px 0;border-radius:10px;display:flex;justify-content:space-between;align-items:center}
-.package button{background:#ff4141;color:white;border:0;border-radius:7px;padding:9px}
-input,select{width:100%;padding:12px;margin:7px 0;background:#202432;color:white;border:1px solid #444;border-radius:8px}
-.submit{width:100%;padding:14px;background:#ff4141;color:white;border:0;border-radius:9px;font-weight:bold}
-.section{display:none}
+body{margin:0;background:#10131c;color:white;font-family:Arial}
+header{text-align:center;background:#1c2230;padding:22px}
+header h1{color:#ff4242;margin:0}
+.notice,.payment,.order{background:#202838;margin:12px;padding:15px;border-radius:12px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:12px}
+.tabs button{padding:13px 4px;background:#292f40;color:white;border:0;border-radius:8px;font-weight:bold}
+.tabs button.active{background:#f04444}
+.section{display:none;padding:12px}
 .section.show{display:block}
-footer{text-align:center;padding:20px;color:#aaa}
+.package{display:flex;justify-content:space-between;align-items:center;background:#202838;margin:9px 0;padding:13px;border-radius:9px}
+.package button,.copy{background:#f04444;color:white;border:0;padding:9px 12px;border-radius:7px}
+input,select{width:100%;padding:13px;margin:7px 0;background:#171d29;color:white;border:1px solid #444;border-radius:8px}
+.submit{width:100%;padding:14px;background:#f04444;color:white;border:0;border-radius:8px;font-weight:bold}
+.copy{margin-left:8px}
+.payment p{display:flex;align-items:center;justify-content:space-between;gap:5px}
+.small{color:#aaa;font-size:13px}
 </style>
 </head>
 <body>
 
 <header>
 <h1>MAXJO TOPUP</h1>
-<p>Fast & Trusted Diamond Top Up</p>
+<p>Fast & Trusted Top Up Service</p>
 </header>
 
 <div class="notice">
-<b>NOTICE 1</b><br>
-Welcome to MAXJO TOPUP. Order carefully.
+<b>📢 NOTICE 1</b><br>Welcome to MAXJO TOPUP.
 </div>
-
 <div class="notice">
-<b>NOTICE 2</b><br>
-Payment করার আগে UID ভালো করে চেক করুন।
+<b>📢 NOTICE 2</b><br>অর্ডার করার আগে UID ভালো করে চেক করুন।
 </div>
 
 <div class="tabs">
-<button class="active" onclick="tab('diamond',this)">Diamond</button>
-<button onclick="tab('weekly',this)">Weekly</button>
-<button onclick="tab('monthly',this)">Monthly</button>
+<button class="active" onclick="openTab('uid',this)">UID TOPUP</button>
+<button onclick="openTab('weekly',this)">WEEKLY</button>
+<button onclick="openTab('monthly',this)">MONTHLY</button>
 </div>
 
-<div class="container">
-
-<div id="diamond" class="section show">
-<h3>💎 Diamond Packages</h3>
-<div id="diamonds"></div>
+<div id="uid" class="section show">
+<h3>💎 UID TOPUP PACKAGES</h3>
+<div id="diamondList"></div>
 </div>
 
 <div id="weekly" class="section">
-<h3>📅 Weekly Packages</h3>
-<div id="weeklies"></div>
+<h3>📅 WEEKLY PACKAGES</h3>
+<div id="weeklyList"></div>
 </div>
 
 <div id="monthly" class="section">
-<h3>🌙 Monthly Packages</h3>
-<div id="monthlies"></div>
+<h3>🌙 MONTHLY PACKAGES</h3>
+<div id="monthlyList"></div>
 </div>
 
-<h3>🛒 Order Form</h3>
+<div class="payment">
+<h3>💳 PAYMENT NUMBERS</h3>
+<p>bKash: <b>01865908732</b>
+<button class="copy" onclick="copyNumber('01865908732')">Copy</button></p>
+<p>Nagad: <b>01627220616</b>
+<button class="copy" onclick="copyNumber('01627220616')">Copy</button></p>
+<p class="small">Send Money করার পর Sender Number ও TrxID দিন।</p>
+</div>
+
+<div class="order">
+<h3>🛒 ORDER FORM</h3>
 <form id="orderForm">
-<input id="uid" placeholder="Game UID" required>
-<input id="pkg" placeholder="Selected Package" readonly required>
-<input id="price" placeholder="Price" readonly required>
+<input id="uidInput" placeholder="Game UID লিখুন" required>
+<input id="packageInput" placeholder="Selected Package" readonly required>
+<input id="priceInput" placeholder="Price" readonly required>
 
 <select id="method" required>
 <option value="">Payment Method</option>
@@ -79,89 +84,85 @@ Payment করার আগে UID ভালো করে চেক করুন
 
 <input id="sender" placeholder="আপনার Payment Number" required>
 <input id="trx" placeholder="Transaction ID (TrxID)" required>
-
-<button class="submit" type="submit">Submit Order</button>
+<button class="submit">SUBMIT ORDER</button>
 </form>
-
-<div id="result"></div>
-
+<div id="message"></div>
 </div>
 
-<footer>
+<footer style="text-align:center;padding:20px;color:#aaa">
 MAXJO TOPUP © 2026
 </footer>
 
 <script>
-const diamondData=[
-["115 Diamond",80],
-["240 Diamond",160],
-["355 Diamond",240],
-["480 Diamond",320],
-["610 Diamond",400],
-["850 Diamond",560],
-["1090 Diamond",720],
-["1240 Diamond",820],
-["1480 Diamond",980],
-["1850 Diamond",1220],
-["2180 Diamond",1440],
-["2530 Diamond",1660],
+const diamond=[
+["115 Diamond",80],["240 Diamond",160],
+["355 Diamond",240],["480 Diamond",320],
+["610 Diamond",400],["850 Diamond",560],
+["1090 Diamond",720],["1240 Diamond",820],
+["1480 Diamond",980],["1850 Diamond",1220],
+["2180 Diamond",1440],["2530 Diamond",1660],
 ["3000 Diamond",1960]
 ];
 
-const weeklyData=[
-["Weekly",155],
-["2X Weekly",310],
-["3X Weekly",465],
-["4X Weekly",620],
-["Weekly Lite",35],
-["2X Weekly Lite",70],
-["3X Weekly Lite",105],
-["4X Weekly Lite",140]
+const weekly=[
+["Weekly",155],["2X Weekly",310],
+["3X Weekly",465],["4X Weekly",620],
+["Weekly Lite",35],["2X Weekly Lite",70],
+["3X Weekly Lite",105],["4X Weekly Lite",140]
 ];
 
-const monthlyData=[
-["Monthly",770],
-["2X Monthly",1540],
-["3X Monthly",2310],
-["4X Monthly",3080],
+const monthly=[
+["Monthly",770],["2X Monthly",1540],
+["3X Monthly",2310],["4X Monthly",3080],
 ["Monthly + Weekly",925],
 ["2X Monthly + Weekly",1695],
 ["3X Monthly + Weekly",2465],
 ["4X Monthly + Weekly",3235]
 ];
 
-function render(list,id){
-document.getElementById(id).innerHTML=list.map(p=>
-`<div class="package">
-<span>${p[0]} - ${p[1]}৳</span>
-<button onclick="choose('${p[0]}',${p[1]})">Buy</button>
-</div>`
-).join("");
+function render(data,id){
+document.getElementById(id).innerHTML=data.map(item=>`
+<div class="package">
+<span>${item[0]}<br><b>${item[1]}৳</b></span>
+<button onclick="selectPackage('${item[0]}',${item[1]})">BUY</button>
+</div>`).join("");
 }
 
-render(diamondData,"diamonds");
-render(weeklyData,"weeklies");
-render(monthlyData,"monthlies");
+render(diamond,"diamondList");
+render(weekly,"weeklyList");
+render(monthly,"monthlyList");
 
-function tab(id,btn){
-document.querySelectorAll(".section").forEach(x=>x.classList.remove("show"));
+function openTab(id,button){
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("show"));
 document.getElementById(id).classList.add("show");
-document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));
-btn.classList.add("active");
+document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));
+button.classList.add("active");
 }
 
-function choose(name,price){
-document.getElementById("pkg").value=name;
-document.getElementById("price").value=price+" টাকা";
-document.getElementById("orderForm").scrollIntoView({behavior:"smooth"});
+function selectPackage(name,price){
+document.getElementById("packageInput").value=name;
+document.getElementById("priceInput").value=price+" টাকা";
+document.querySelector(".order").scrollIntoView({behavior:"smooth"});
+}
+
+function copyNumber(number){
+if(navigator.clipboard && window.isSecureContext){
+navigator.clipboard.writeText(number).then(()=>alert("নম্বর কপি হয়েছে"));
+}else{
+const t=document.createElement("textarea");
+t.value=number;
+document.body.appendChild(t);
+t.select();
+document.execCommand("copy");
+t.remove();
+alert("নম্বর কপি হয়েছে");
+}
 }
 
 document.getElementById("orderForm").addEventListener("submit",function(e){
 e.preventDefault();
-
-document.getElementById("result").innerHTML=
-"<div class='notice'>অর্ডারের তথ্য প্রস্তুত হয়েছে। Demo সংস্করণে অর্ডার ডাটাবেজে জমা হয় না।</div>";
-
+document.getElementById("message").innerHTML=
+"<p style='color:#ffcc55'>Demo Order: অর্ডার তথ্য নেওয়া হয়েছে। এখনো ডাটাবেজে জমা হয়নি।</p>";
 });
 </script>
 </body>
